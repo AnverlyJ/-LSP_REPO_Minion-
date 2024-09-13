@@ -11,6 +11,7 @@ import java.util.StringTokenizer;
 public class wordcount{
 	public static void main(String args[]) {
 		
+		
 		 // Specify the path to the input file HERE (input file Name)
         String filePath = "words.txt"; 
         
@@ -48,7 +49,8 @@ public class wordcount{
 		
 		//print token and value of 
 		for (Map.Entry<String, Integer> entry : wordCountMap.entrySet()) {
-			System.out.println(entry.getKey() + ":" + entry.getValue());
+			System.out.println(entry.getKey() + ":"
+					+ "." + entry.getValue());
 		}
 		
 	}
