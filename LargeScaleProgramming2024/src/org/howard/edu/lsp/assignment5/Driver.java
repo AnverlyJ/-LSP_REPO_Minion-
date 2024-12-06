@@ -16,6 +16,11 @@ public class Driver {
         set2.add(3);
         set2.add(4);
         set2.add(5);
+        
+        IntegerSet set3 = new IntegerSet();
+        set3.add(7);
+        set3.add(4);
+        set3.add(2);
 
         System.out.println("Value of Set2: " + set2.toString());
 
@@ -23,8 +28,8 @@ public class Driver {
         set1.union(set2);
         System.out.println("Result of union: " + set1.toString());
 
-        System.out.println("Intersection of Set1 and Set2");
-        set1.intersect(set2);
-        System.out.println("Result of intersection: " + set1.toString());
+        System.out.println("Intersection of Set2 and Set3");
+        set2.intersect(set3);
+        System.out.println("Result of intersection: " + set2.toString());
     }
 }

@@ -49,20 +49,20 @@ public class book {
 	        this.yearPublished = yearPublished;
 	    }
 
-	    // 2. Override equals() to compare based on ISBN and author
+	    // 2. override
 	    @Override
 	    public boolean equals(Object obj) {
 	        if (this == obj) {
-	            return true; // Same object reference
+	            return true; 
 	        }
 	        if (obj == null || getClass() != obj.getClass()) {
-	            return false; // Null or different class type
+	            return false; 
 	        }
 	        book book = (book) obj;
 	        return this.ISBN.equals(book.ISBN) && this.author.equals(book.author);
 	    }
 
-	    // 3. Override toString() to return a meaningful string representation
+	    // 3. override toString() to return a full string
 	    @Override
 	    public String toString() {
 	        return "Title: " + title + ", Author: " + author + 

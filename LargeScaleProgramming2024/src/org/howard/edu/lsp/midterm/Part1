@@ -1,0 +1,217 @@
+Howard University
+College of Engineering and Architecture
+Department of Electrical Engineering & Computer Science
+
+Large Scale Programming
+Fall 2024
+
+
+
+Midterm Exam – Part I
+October 17, 2024
+
+
+Part I:		50 pts. (essay questions)
+
+Instructions:
+•	Submit completed exam to your github repository under package org.howard.edu.lsp.midterm
+
+Verify that the commit(s) completed successfully
+
+•	OPEN BOOK, OPEN NOTES.  THERE IS NO COLLABORATION ON THIS EXAM
+•	Site any and ALL references for anything obtained off the internet. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Question 1. (10 pts.)
+
+You are reviewing the following class in a Fitness Tracking System. The class is intended to manage various aspects of a user’s fitness activities.
+
+ 
+
+Tasks:
+a)	Analyze the UserFitness class. Explain why this class has low cohesion. (5 pts.)
+
+The UserFitness class is not cohesive because there are multiple responsibilities that are being taken care of  in different functions when it could be done in their separate functions. 
+
+b)	Describe, in general,  how you would split the UserFitness class into more cohesive classes.  Your answer should not be a complete design.  (5 pts.)
+
+For example the fitness report could be calling the other functions in order and retuning the info could happen in their individual functions. That could improve cohesivity. Age and name, height, and weight could also be their own functions.
+
+
+Question 2. (5 pts.)
+Given the following, answer the below questions.
+
+A university manages its students using a program that has a class Student with subclasses FirstYear, SecondYear, and ThirdYear for year-specific state and behaviors. The program has a List that contains all Students.
+
+Should Student be a class, an abstract class or an interface? Explain your answer
+
+Student should be an abstract class because it abstract classes are better for more general functions and can have some but much implementation. Additionally, the first, second, and third year subclasses can be concrete
+
+a)	At the end of each year, the third-year students graduate and must be removed. This is done by passing the list to the following method: 
+
+void removeThirdYears(List<Students> students) { 
+  for (Student student : students) { 
+    try { 
+ ThirdYear = (ThirdYear) student; 
+ students.remove(thirdyear); 
+    } 
+  }
+}
+
+Why is the above method flawed? Hint: Another Arthur Riel heuristic (5 pts.)
+The following is flawed (aside from syntax errors) because it is using a list structure and the removes the student while it is iterating. Modifying a collection while iterating increases coupling between the iterator and the collection, making the system more prone to errors. An iterator lets you “decouple” removing an element during iteration which is more maintainable.
+
+
+Question 3. (5 pts.)
+Given the following, answer the below questions.
+
+public class BankAccount {
+    public String accountHolderName;
+    public String accountNumber;
+    public double balance;
+    public double interestRate;
+
+public BankAccount(
+String accountHolderName, 
+String accountNumber, 
+double initialDeposit, 
+double interestRate) {
+        this.accountHolderName = accountHolderName;
+        this.accountNumber = accountNumber;
+        this.balance = initialDeposit;
+        this.interestRate = interestRate;
+    }
+
+    // Exposed implementation for adding interest
+    public void addInterest() {
+        double interest = balance * (interestRate / 100);
+        balance += interest;
+    }
+
+    // Exposed implementation for deposits
+    public void deposit(double amount) {
+        balance += amount;
+    }
+
+    // Exposed implementation for withdrawals
+    public void withdraw(double amount) {
+        balance -= amount;
+    }
+}
+
+a)	Is BankAccount well-encapsulated? Why or why not? If so, describe what changes you would make to the class.  Otherwise, state nothing.  (5 pts.)
+
+With everything being public in the excerpt of code I would say that no it is not well encapsulated. Encapsulation is a term that describes code where users, coders, or any outside manipulation cannot access or change data within your classes. In other words it refers to keeping data private especially when it is sensitive information like banking details. There is Encapsulation here because coders cannot see the actual information being assigned but I would say that private classes for account holder name, balance , account number, could be beneficial
+
+
+
+
+
+Question 4. (10 pts.)
+Given the following, answer the below questions.
+        
+Given:    
+A car manufacturer uses Java software to track current vehicles being built. The UML diagram below shows an excerpt of the current software structure. You should assume the presence of other appropriate fields and methods
+
+
+
+
+
+
+
+
+
+
+
+
+
+Each car can be built to one of three trim levels: Base, Luxury or Sport. They can also be configured with an electric or petrol engine. At various points in the manufacturing process the customer can choose to change the trim level. 
+
+Task:
+a)	Explain in detail why the current structure does not support this. (5 pts.)
+
+The model does not support changing the trim level because as the structure shows the base , sports, and luxury are separate options. Assuming other appropriate field and methods, each trim will have different allowances for the engine, fuel level, and other modifications to how functionality is executed. Once a trim is chosen and it applies everything that comes with that specific trim such as speed, mph, brake capabilities, if the consumer were to choose a different trim, the system would have to start over. The system will have because the model seems to be using inheritance
+
+
+b)	Describe how to refactor the structure to allow trim-level change for a car to dynamically change.  Hint: How would you modify Car to use composition to solve the problem? (5 pts.)
+
+I would modify by not using inheritance and separating the modules into smaller reusable functions that could be translated into different classes so that changes to trim can be made during the manufacturing process. Compositional approach would limit the complexity of the relationship. Also, you could even have a transition function where it passes through the main characteristics and can insert those into different trim options so there is little wait time for the type of car to change if the customer changes their mind.
+
+
+
+Question 5. (5 pts.)
+Suppose you are about to code a particular class and find that you have written another class with nearly the functionality that you now are developing. This means that the two classes in large parts contain the same code, but in smaller parts have different code. Explain in detail why this may be a problem and how to solve it.  Give your answer in terms of Arthur Riel’s design heuristics.
+
+Aurthur Riel heuristics for this scenario define If two or more classes only share common data (no common behavior) then that common data should be placed in a class which will be contained by each sharing class.. If you have two pieces of code that largely have the same functionality, I would say that it could create a problem of redundancy and to solve it, first minimize the amount of reused code or similar code, and utilize composition over inheritance such that  you can compose that functionality into each class that needs it. Which would  allow for more flexibility, especially if the two classes are only partially similar.
+
+Website: https://manclswx.com/talks/top_heuristics.html
+
+Question 6. (5 pts.)
+Suppose we need to store instances of the classes Car and BankAccount in a database. To obtain low coupling it may seem as if the functionality to save an instance should be in precisely those classes, since they have the information that shall be saved. Why is it unwise to place the database calls there? 
+
+We shouldn’t place the database calls there because it can lead to scattered and duplicated code when you interact with the database again. Also, classes that directly handle their own instances become harder to test by themselves. Unit testing can become less effective and increases the chances of introducing bugs. Also, if later you change the database technology or the way data is stored, you would need to modify each class that handles its own instance, leading to a ripple effect.
+
+Question 7. (5 pts.)
+Given a set of requirements, what conditions must be met to make it appropriate to create a new class hierarchy using inheritance? Neither superclass nor subclass exist before, the question is about designing a new class hierarchy. 
+
+I would say that implementing inheritance is key when you have an is-a relationship. Meaning that if your class is animal, inheritance will come In handy defining cat or dog. When there is a reuse of common characteristics and a small subset of different behaviors tat stem from these characteristics, I think inheritance comes in handy then
+
+Question 8. (2.5 pts.)
+Describe the difference between inheritance and composition why would you choose one over the other.
+
+In inheritance, we establish a relationship with a superclass that cannot be altered while the program is running because it is static at runtime. Inheritance also gets more complex because changes in the parent could negatively affect the child.
+
+On the other hand, composition lets you specify a type that can support multiple implementations and can be adapted dynamically during runtime. Composition also allows you to test you “child” class without needing the parent every time.
+
+With that being said, composition is more flexible than inheritance and could be better in more cases. While I would chose composition, it is true that inheritance has its benefits, such as less redundancy, time saved writing code, and great flow within your code. However the cases where you need it are too specific and so places where inheritance is the better option are far less than cases where composition could work jest as well.
+
+Website: 
+https://www.geeksforgeeks.org/difference-between-inheritance-and-composition-in-java/
+
+Question 9. (2.5 pts.)
+Explain the meaning of cohesion and describe whether low or high cohesion is better. 
+
+Cohesion is how much different parts of a class belong together. It can tell you how focused the responsibilities of that module are and high cohesion says that the components of a module work well together, while low cohesion means that the module is disorganized or have unrelated responsibilities.
+in a highly cohesive system, all the parts are closely related to the module’s main purpose. In low cohesion, a module has methods and attributes that do not relate well to each other or serve multiple, unrelated purposes.
+
+https://www.baeldung.com/cs/cohesion-vs-coupling
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
